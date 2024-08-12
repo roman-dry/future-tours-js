@@ -1,0 +1,11 @@
+.home-block {
+    background-image: url('../../../public/images/Main_bg_6.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
