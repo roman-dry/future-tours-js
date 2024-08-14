@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import { removeUser, setUser } from '../../redux/slices/userSlice';
 import { removeToken, setTokenItem } from '../../redux/slices/tokenSlice';
+import { useNavigate } from 'react-router-dom';
 
 import "./login.css";
 
@@ -11,6 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,16 +24,23 @@ const Login = () => {
             });
 
             console.log('Login successful:', response.data);
-            const accessToken = response?.data?.access_token;
-            const user = response?.data.user;
-            const decode = jwtDecode(accessToken);
-            const exp = decode.exp;
-            console.log(exp);
-            dispatch(setUser(user))
-            dispatch(setTokenItem({
-                access_token: accessToken,
-                exp
-            }))
+            if (response?.data.message === "success") {
+                const accessToken = response?.data?.access_token;
+                const user = response?.data.user;
+                const decode = jwtDecode(accessToken);
+                const exp = decode.exp;
+                console.log(exp);
+                dispatch(setUser(user))
+                dispatch(setTokenItem({
+                    access_token: accessToken,
+                    exp
+                }))
+                navigate("/");
+                
+            } else {
+                alert("Login is failed!")
+            }
+            
             // if (accessToken && typeof accessToken === 'string') {
             //     const decodedToken = jwtDecode(accessToken);
             //     console.log('Token Expiration:', decodedToken.exp);
