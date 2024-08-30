@@ -6,6 +6,7 @@ import Registration from '../registration/Registration';
 import Login from '../login/Login';
 import { checkTokenExpiration } from '../../utils/checkTokenExpiration';
 import { useSelector } from 'react-redux';
+import Layout from '../layout/Layout';
 import Home from '../home/Home';
 import Cart from '../cart/Cart';
 import Robots from '../robots/Robots';
@@ -28,14 +29,16 @@ export const App = () =>  {
   return (
     
       <Routes>
-        <Route exact path={endpoints.REGISTRATION} element={<Registration />} />
-        <Route exact path={endpoints.LOGIN} element={<Login />} />
-        <Route exact path={endpoints.TICKET} element={<Ticket />} />   
-        <Route exact path={endpoints.HOME} element={<Home />} />     
-        <Route exact path={endpoints.CART} element={<Cart />} />  
-        <Route exact path={endpoints.ROBOTS} element={<Robots />} />  
-        <Route exact path={endpoints.TRANSPORTS} element={<Transports />} />  
-        <Route exact path={endpoints.ABOUT} element={<About />} />  
+        <Route path={endpoints.HOME} element={<Layout />}>
+        <Route exact path={endpoints.HOME} element={<Home />} /> 
+          <Route exact path={endpoints.REGISTRATION} element={<Registration />} />
+          <Route exact path={endpoints.LOGIN} element={<Login />} />
+          <Route exact path={endpoints.TICKET} element={<Ticket />} />               
+          <Route exact path={endpoints.CART} element={<Cart />} />  
+          <Route exact path={endpoints.ROBOTS} element={<Robots />} />  
+          <Route exact path={endpoints.TRANSPORTS} element={<Transports />} />  
+          <Route exact path={endpoints.ABOUT} element={<About />} />
+        </Route>          
       </Routes>    
   );
 }

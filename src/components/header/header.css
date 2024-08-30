@@ -1,0 +1,44 @@
+#header {
+    position: relative;
+}
+
+#header::after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 27px;
+right: 27px;
+height: 1px; /* або товщина бордера */
+background-color: #c6c6c6; /* або інший колір бордера */
+}
+
+.header-ul {
+    right: -17px;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.header-ul-transport {
+    right: -8px;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.header-li {
+    padding: 6px 16px !important;
+    font-size: 14px;
+}
+
+.li-item-menu:hover {
+    background-color: grey !important;
+    border-radius: 7px;
+    border-color: grey !important;
+    color: #E1F5FA !important;
+}
+
+@media screen and (min-width: 340px) and (max-width: 450px) {
+    .container-fluid {
+        flex-wrap: nowrap !important;
+        --bs-gutter-x: 0rem !important;
+    }
+}

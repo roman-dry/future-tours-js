@@ -1,5 +1,8 @@
 .register-block {
-    background-image: url('../../../public/images/Reg_img_3.png');
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/images/Reg_img_3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,4 +18,24 @@ input[type="email"]::-webkit-input-placeholder,
 input[type="tel"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
     color: #949494 !important;
+}
+
+.back-home {
+    position: fixed; 
+    top: 25px;
+    left: 30px; 
+    padding: 10px 10px 5px; 
+    text-decoration: none; 
+    color: #f7e434; 
+    border: 1px solid #f7e434; 
+    border-radius: 7px;
+}
+
+.back-home:hover {
+    color: #9f9006;
+    border: 1px solid #9f9006; 
+}
+
+.registr-login-link:hover {
+    color: #9f9006 !important;
 }

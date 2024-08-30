@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/userSlice';
 import { setTokenItem } from '../../redux/slices/tokenSlice';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import "./registration.css";
 import endpoints from '../../shared/router/endpoints';
@@ -62,9 +62,9 @@ const Registration = () => {
 
     const handleRecaptchaChange = (token) => {
         setRecaptchaToken(token);
-      };
+    };
 
-      const handleAutoFill = () => {
+    const handleAutoFill = () => {
         // Check if fields are autofilled
         const fields = ["name", "surname", "email", "phone", "password", "passwordConfirm"];
         fields.forEach(field => {
@@ -115,7 +115,7 @@ const Registration = () => {
                 }))
                 navigate(endpoints.HOME);
             } else {
-                alert("Registration is failed!")
+                alert(response?.data.message)
             }
             
         } catch (error) {
@@ -125,7 +125,8 @@ const Registration = () => {
 
     return (
         <div className="register-block">
-            <form className="mx-auto px-2 d-flex flex-column" onSubmit={handleSubmit(onHandleSubmit)}>
+            <Link to={`${endpoints.HOME}`} className="back-home" ><h4>BACK</h4></Link>
+            <form className="mx-auto px-2 d-flex flex-column" onSubmit={handleSubmit(onHandleSubmit)}>                 
                 <div className={`d-flex flex-column ${errors.name ? "mb-0" : ""}`}
                      style={{ marginBottom: "21px" }}>
                     <input 
@@ -257,7 +258,7 @@ const Registration = () => {
                     />
 
                 </div>
-                <div className="mb-4 mt-2 d-flex justify-content-center" >
+                <div className="mb-2 mt-2 d-flex justify-content-center" >
                     <button 
                         className="btn btn-sm"  
                         style={{ width: "315px", height: "32px", color: `${!areAllFieldsFilled() || !recaptchaToken ? "g#faf8f7" : "green"}`, borderColor: "#92f7f6", borderRadius: "8px", backgroundColor: `${!areAllFieldsFilled() || !recaptchaToken ? "" : "#92f7f6"}` }}                      
@@ -267,6 +268,9 @@ const Registration = () => {
                         REGISTER
                     </button>
 
+                </div>
+                <div className="text-center">
+                    <Link to={`/${endpoints.LOGIN}`} className="registr-login-link" style={{ textDecoration: "none", color: "#f7e434" }}>I already have an account</Link>
                 </div>
                
                 

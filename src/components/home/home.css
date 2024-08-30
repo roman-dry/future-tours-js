@@ -1,5 +1,5 @@
 .home-block {
-    background-image: url('../../../public/images/Main_bg_6.png');
+    /* background-image: url('../../../public/images/Main_bg_6.png'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -8,4 +8,46 @@
     display: flex;
     justify-content: center; 
     align-items: center;
+    /* opacity: .5; */
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 150px;
+    height: 170px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 40s linear infinite;
+    animation-play-state: var(--animation-state, running);
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-12deg) rotateY(360deg);
+    } to {
+        transform: perspective(1000px) rotateX(-12deg) rotateY(0deg);
+    }
+    
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg )) translateZ(550px);
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
