@@ -13,9 +13,10 @@
 
 .banner {
     width: 100%;
-    height: 100vh;
+    height: 88vh;
     text-align: center;
     overflow: hidden;
+    top: -60px;
     position: relative;
 }
 
@@ -23,7 +24,7 @@
     position: absolute;
     width: 150px;
     height: 170px;
-    top: 10%;
+    top: 8%;
     left: calc(50% - 100px);
     transform-style: preserve-3d;
     transform: perspective(1000px);
@@ -51,3 +52,83 @@
     height: 100%;
     object-fit: cover;
 }
+
+/* .btn-3d {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px #0056b3;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-3d:active {
+    box-shadow: 0 2px #0056b3;
+    transform: translateY(3px);
+} */
+
+.animated-3d {
+    width: 160px;
+    position: absolute;
+    top: 150px;  
+    left: 43%;
+    cursor: pointer;
+    transform: rotateX(-12deg);
+    transition: transform 0.2s,
+}
+
+.animated-3d:hover {
+    transform: rotateX(-12deg) translateY(-2px); 
+}
+
+.pause-button-container {
+    position: absolute;
+    top: 170px;  
+    left: 46%;
+    background-color: transparent;
+    border: 5px solid white; /* Border thickness */
+    border-radius: 50%;      /* Makes the container circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Adjust size as needed */
+    width: 50px;  /* Adjust size as needed */
+    cursor: pointer;
+}
+
+.pause-button {
+    background-color: transparent;
+    border: none;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    height: 25px; /* Adjust height as needed */
+    width: 20px;  /* Adjust width as needed */
+}
+
+.play-button-container {
+    position: absolute;
+    top: 170px;  
+    left: 46%;
+    background-color: transparent;
+    border: 5px solid white; /* Border thickness */
+    border-radius: 50%;      /* Makes the container circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Adjust size as needed */
+    width: 50px;  /* Adjust size as needed */
+    cursor: pointer;
+}
+
+.play-button {
+    width: 0;
+    height: 0;
+    margin-left: 7px;
+    border-left: 20px solid white; /* Adjust size as needed */
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+}
+

@@ -1,22 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StarWarsText from "../star-wars-text/StarWarsText";
 import { useSelector } from "react-redux";
 
 import "./home.css";
+import { baseUrl } from "../../api/http-client";
 
 const Home = () => {
     const [isAnimating, setIsAnimating] = useState(true);
     const isSkiped = useSelector(state => state.introReducer.intro.intro);
+    const [cards, setCards] = useState([]);
 
     const toggleAnimation = () => {
         setIsAnimating(!isAnimating);
     };
 
+    useEffect(() => {
+        const getCards = async() => {
+            try {
+                const { data } = await baseUrl.get('/card');
+                setCards(data);
+
+            } catch (error) {
+                console.error('Failed to get cards!');
+            }
+        }
+        getCards();
+
+    }, [])
+
+    console.log(cards);
+
     return (
         <div className="home-block">
             <StarWarsText />
             {
-                isSkiped && <div className="banner" style={{ marginTop: "120px", position: "relative" }}>
+                isSkiped && <div className="banner" style={{ marginTop: "190px", position: "relative" }}>
                 <div className="slider" style={{ '--quantity': 12, animationPlayState: isAnimating ? 'running' : 'paused' }}>
                     <div className="item" style={{ '--position': 1 }}>
                         <h3 style={{ color: "white" }}>22nd century</h3>
@@ -67,9 +85,14 @@ const Home = () => {
                         <img src="/images/Tour_33.png" width="150px" alt="tour-33" />
                     </div>
                 </div>
-                <button onClick={toggleAnimation} style={{ marginTop: "210px", borderRadius: "5px", position: "absolute" }}>
-                    {isAnimating ? 'Pause' : 'Resume'}
-                </button>
+                {
+                    isAnimating ? (<div className="pause-button-container" onClick={toggleAnimation}>
+                        <div className="pause-button"></div>
+                    </div>) : (<div className="play-button-container" onClick={toggleAnimation}>
+                    <div className="play-button"></div>
+                </div>)
+                }               
+                
             </div>
             }
             

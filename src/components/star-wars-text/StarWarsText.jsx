@@ -5,7 +5,7 @@ import { setIntro } from "../../redux/slices/isSkipedIntro";
 
 const StarWarsText = () => {
     const [isPaused, setIsPaused] = useState(false);
-    // const [isSkiped, setIsSkiped] = useState(false);
+    //const [isSkiped, setIsSkiped] = useState(false);
     const [animatePause, setAnimatePause] = useState(false);
     const [animateSkip, setAnimateSkip] = useState(false);
     const isSkiped = useSelector(state => state.introReducer.intro.intro);
@@ -26,9 +26,9 @@ const StarWarsText = () => {
       useEffect(() => {
         const triggerAnimationPause = () => {
             setAnimatePause(true);
-            // setTimeout(() => setAnimatePause(false), 2000);
+           //setTimeout(() => setAnimatePause(false), 2000);
         };
-        // triggerAnimationPause();
+        //triggerAnimationPause();
         const interval = setInterval(triggerAnimationPause, 1000);
         return () => clearInterval(interval);
 
@@ -37,7 +37,7 @@ const StarWarsText = () => {
       useEffect(() => {
         const triggerAnimationSkip = () => {
             setAnimateSkip(true);
-            // setTimeout(() => setAnimateSkip(false), 2000);
+            //setTimeout(() => setAnimateSkip(false), 2000);
         };
         // triggerAnimationSkip();
         const interval = setInterval(triggerAnimationSkip, 2000);
